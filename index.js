@@ -3,7 +3,7 @@ const http = require("http");
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 const host = 'localhost';
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 // ––– FUNCTIONS ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
@@ -77,5 +77,5 @@ const requestListener = async (req, res) => {
 const server = http.createServer(requestListener);
 
 server.listen(port, host, () => {
-    console.info(`Server is running on http://${host}:${port}`);
+    console.info(`Server is running on http://${host}:${process.env.PORT}`);
 });
