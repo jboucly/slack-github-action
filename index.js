@@ -64,7 +64,7 @@ const sendNotificationToUrl = async (githubData) => {
 const requestListener = async (req, res) => {
     console.info(`URL => ${req.url}`);
 
-    if (req.url !== '/' && req.url !== '/favicon.ico') {
+    if (req.url === '/github-actions') {
         await sendNotificationToUrl(await convertBufferToJson(req));
     }
 
