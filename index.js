@@ -62,9 +62,14 @@ const sendNotificationToUrl = async (githubData) => {
 
 
 const requestListener = async (req, res) => {
-    await sendNotificationToUrl(await convertBufferToJson(req));
+    console.info(`URL => ${req.url}`);
+
+    if (req.url !== '/' && req.url !== '/favicon.ico') {
+        await sendNotificationToUrl(await convertBufferToJson(req));
+    }
+
     res.writeHead(200);
-    res.end();
+    res.end('App work !');
 };
 
 // ––– SERVER ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -72,5 +77,5 @@ const requestListener = async (req, res) => {
 const server = http.createServer(requestListener);
 
 server.listen(port, host, () => {
-    console.log(`Server is running on http://${host}:${port}`);
+    console.info(`Server is running on http://${host}:${port}`);
 });
