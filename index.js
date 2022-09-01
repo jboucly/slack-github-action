@@ -51,7 +51,7 @@ const sendNotificationToUrl = async (githubData) => {
                 body = {
                     ...body,
                     emoji: ':x:',
-                    message: 'Une pipeline vient de fail !',
+                    message: 'Pipeline fail',
                 };
             }
             break;
