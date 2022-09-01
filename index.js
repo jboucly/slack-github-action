@@ -2,7 +2,7 @@ require('dotenv').config();
 const http = require("http");
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-const host = 'localhost';
+const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 8000;
 
 // ––– FUNCTIONS ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
