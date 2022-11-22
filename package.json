@@ -1,14 +1,14 @@
 {
-    "name": "slack-github-action",
+    "name": "webhook-github-action",
     "version": "1.0.0",
-    "description": "Webhook to send notification in slack / discord / other when github action fail",
-    "main": "index.js",
-    "repository": "https://github.com/jboucly/slack-github-action",
-    "author": "jboucly",
     "license": "MIT",
     "private": false,
+    "main": "server.js",
+    "author": "jboucly",
+    "repository": "https://github.com/jboucly/slack-github-action",
+    "description": "Webhook to send notification in slack / discord / other when github action fail",
     "scripts": {
-        "start": "nodemon index.js"
+        "start": "nodemon server.js"
     },
     "dependencies": {
         "dotenv": "^16.0.2",
