@@ -13,7 +13,11 @@
     ],
     "routes": [
         {
-            "src": "/*",
+            "src": "/github-actions/slack",
+            "dest": "/server.js"
+        },
+        {
+            "src": "/github-actions/discord",
             "dest": "/server.js"
         }
     ]
