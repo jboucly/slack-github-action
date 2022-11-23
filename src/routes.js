@@ -3,7 +3,9 @@ const { sendDiscordNotifications } = require('./functions/send-discord-notificat
 
 const setRoutes = (app) => {
     app.get('/', async (req, res) => {
-        res.status(200).send('App work, awaiting instruction !');
+        res.status(200).send(
+            'App work, awaiting instruction ! (see: https://github.com/jboucly/webhook-github-action)'
+        );
     });
 
     app.post('/github-actions/discord', async (req, res) => {
