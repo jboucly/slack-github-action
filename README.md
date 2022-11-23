@@ -22,7 +22,7 @@ An HTTP server runs and listens permanently on certain pre-defined routes (see r
 
 ### Setting up a server
 
-Fork the repository and deploy it on a server such as Heroku or Vercel.
+Fork the repository and deploy it on a server such as Heroku or other.
 
 ### Setting up a webhook on a github repository
 
