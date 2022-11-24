@@ -17,6 +17,10 @@ const verifySecret = (req, res, next) => {
         return next(`Request body digest (${digest}) did not match ${sigHeaderName} (${sig})`);
     }
 
+    console.info(`
+        Secret OK
+        URL => ${req.originalUrl}
+    `);
     return next();
 };
 
