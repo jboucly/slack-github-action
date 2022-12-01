@@ -286,20 +286,21 @@
 
                         <!-- Routes -->
                         <section id="routes">
-                            <h2>Sass</h2>
+                            <h2>Routes</h2>
                             <p>
-                                We have added SASS <code>.scss</code> files in template. If you know how to use SASS you
-                                can change sass files and compile the css as well. You can find sass file here -
-                                <code>HTML/../sass</code>
+                                It's possible to send notification to Slack or Discord, and to send the notification
+                                from github either to Slack or to Discord there are precisely two routes available :
                             </p>
-                            <p>
-                                Open the <code>sass/_variables.scss</code> and Edit the values according to your needs.
-                                If you need more Advanced Setup then you can Edit the Respective Files yourself which
-                                have been branched inside the same Folder. It is completely at your discretion only to
-                                include the Required <code>.scss</code> Files you need to minimize the amount of CSS &
-                                including only the Styles of the Blocks you need. This can be setup in your
-                                <code>stylesheet.scss</code> File.
-                            </p>
+                            <ul>
+                                <li>
+                                    <code>/github-actions/slack</code> ➡️ Send notification for Slack (example of url :
+                                    <code>https://webhook.jboucly.fr/github-actions/slack</code>)
+                                </li>
+                                <li>
+                                    <code>/github-actions/discord</code> ➡️ Send notification for Discord (example of
+                                    url : <code>https://webhook.jboucly.fr/github-actions/discord</code>)
+                                </li>
+                            </ul>
                         </section>
 
                         <hr class="divider" />
