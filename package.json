@@ -9,6 +9,7 @@
     "description": "Webhook to send notification in slack / discord / other when github action fail",
     "scripts": {
         "prettier": "prettier --check 'src/**/*'",
+        "prettier:fix": "prettier --write 'src/**/*'",
         "start": "node index.js",
         "start:dev": "nodemon index.js"
     },
