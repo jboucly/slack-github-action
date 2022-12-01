@@ -75,7 +75,7 @@
                 <div class="idocs-navigation bg-dark docs-navigation-dark">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#idocs_start">Getting Started</a>
+                            <a class="nav-link active" href="#start">Getting Started</a>
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#installation">Installation</a>
@@ -84,7 +84,7 @@
                                     <a class="nav-link" href="#environments">Environments variables</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#configurations">Configurations</a>
+                                    <a class="nav-link" href="#configurations">Github configurations</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#routes">Routes</a>
@@ -92,11 +92,13 @@
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="#idocs_support">Support</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#developments">Developments</a></li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#idocs_changelog">Changelog</a>
+                            <a class="nav-link" href="#changelog">Changelog</a>
                             <ul class="nav flex-column">
-                                <li class="nav-item"><a class="nav-link" href="#v1-1">v1.1</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#v1-0">v1.0</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#v1-0-2">v1.0.2</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#v1-0-1">v1.0.1</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#v1-0-0">v1.0.0</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -106,7 +108,7 @@
                 <div class="idocs-content">
                     <div class="container">
                         <!-- Getting Started -->
-                        <section id="idocs_start">
+                        <section id="start">
                             <div class="d-flex align-center justify-content-center mb-5">
                                 <img
                                     src="https://img.shields.io/static/v1?style=for-the-badge&color=green&logoColor=white&logo=slack&label=slack&message=webhook"
@@ -255,21 +257,29 @@
 
                         <!-- Configurations -->
                         <section id="configurations">
-                            <h2>HTML Structure</h2>
+                            <h2>Github Configurations</h2>
                             <p>
-                                iDocs follows a simple and easy to customize coding structure. Here is the sample for
-                                your reference:<br />
-                                The template is based on
-                                <a class="ml-1" target="_blank" href="https://getbootstrap.com/"
-                                    ><i class="fas fa-external-link-alt"></i> Bootstrap Framework</a
-                                >
+                                Once your server is ready to receive notifications from Github, you can set up github
+                                webhooks.
                             </p>
-                            <p class="alert alert-info">
-                                If you need more information, please visit bootstrap site:
-                                <a target="_blank" href="https://getbootstrap.com/docs/4.4/layout/grid/"
-                                    >https://getbootstrap.com</a
-                                >
+                            <p class="alert alert-info">Github webhooks are totally free and that's a pleasure 🚀</p>
+                            <p>
+                                Go to the settings of the repository on which you want to add notifications when your
+                                CI/CD evolves. And click on `Add webhook` :
                             </p>
+                            <img class="mb-3 mt-3" src="images/add-webhook.png" />
+
+                            <ul>
+                                <li>
+                                    Once on the interface add the url of the webhook of your server on which this
+                                    application is located with the correct route for either Discord or Slack (see
+                                    <a href="#routes">Routes</a>).
+                                </li>
+                                <li>Select <code>application/json</code> for send JSON to server.</li>
+                                <li>Add your secret for access to endpoint of server.</li>
+                                <li>Select <i>individual events</i> and select <i>Check runs</i> than validate.</li>
+                            </ul>
+                            <img class="mb-3 mt-3" src="images/add-webhook.png" /><br />
                         </section>
 
                         <hr class="divider" />
@@ -323,7 +333,7 @@
 
                         <!-- Changelog -->
 
-                        <section id="idocs_changelog">
+                        <section id="changelog">
                             <h2>Changelog</h2>
                             <p class="text-4">
                                 See what's new added, changed, fixed, improved or updated in the latest versions.
@@ -333,7 +343,7 @@
                                 <a target="_blank" href="https://github.com/jboucly"> @jboucly </a>
                             </p>
 
-                            <h3 id="v1-1">Version 1.0.2 <small class="text-muted">(24 Nov, 2022)</small></h3>
+                            <h3 id="v1-0-2">Version 1.0.2 <small class="text-muted">(24 Nov, 2022)</small></h3>
                             <ul class="changelog">
                                 <li><span class="badge badge-info">Updated</span> Update Deta config</li>
                                 <li>
@@ -344,7 +354,7 @@
 
                             <hr class="divider" />
 
-                            <h3 id="v1-1">Version 1.0.1 <small class="text-muted">(23 Nov, 2022)</small></h3>
+                            <h3 id="v1-0-1">Version 1.0.1 <small class="text-muted">(23 Nov, 2022)</small></h3>
                             <ul class="changelog">
                                 <li><span class="badge badge-danger">Fixed</span> Remove vercel</li>
                                 <li><span class="badge badge-danger">Fixed</span> Some minor bugs for responsive</li>
@@ -360,7 +370,7 @@
 
                             <hr class="divider" />
 
-                            <h3 id="v1-0">Version 1.0.0 <small class="text-muted">(22 Nov, 2022)</small></h3>
+                            <h3 id="v1-0-0">Version 1.0.0 <small class="text-muted">(22 Nov, 2022)</small></h3>
                             <p>Initial Release</p>
                         </section>
                     </div>
