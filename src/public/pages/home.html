@@ -78,20 +78,16 @@
                             <a class="nav-link active" href="#idocs_start">Getting Started</a>
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#idocs_installation">Installation</a>
+                                    <a class="nav-link" href="#installation">Installation</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#idocs_html_structure">HTML Structure</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href="#idocs_sass">Sass</a></li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#idocs_color_schemes">Color Schemes</a>
+                                    <a class="nav-link" href="#environments">Environments variables</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#idocs_theme_customization">Customization</a>
+                                    <a class="nav-link" href="#configurations">Configurations</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#idocs_logo_settings">Logo Settings</a>
+                                    <a class="nav-link" href="#routes">Routes</a>
                                 </li>
                             </ul>
                         </li>
@@ -111,12 +107,30 @@
                     <div class="container">
                         <!-- Getting Started -->
                         <section id="idocs_start">
+                            <div class="d-flex align-center justify-content-center mb-5">
+                                <img
+                                    src="https://img.shields.io/static/v1?style=for-the-badge&color=green&logoColor=white&logo=slack&label=slack&message=webhook"
+                                    alt="slack"
+                                    class="mr-2"
+                                />
+                                <img
+                                    src="https://img.shields.io/static/v1?style=for-the-badge&color=7289DA&logoColor=white&logo=discord&label=discord&message=webhook"
+                                    alt="discord"
+                                />
+                            </div>
                             <h1>What is Webhook Github Actions ?</h1>
                             <p class="lead">
                                 Webhook Github Action is a self-hosted express server allowing the sending of
                                 notification (webhook) to several messaging systems. Example, you work in a team and you
                                 would like to be informed when a CI/CD fails to intervene quickly on the problem
                                 encountered by the CI/CD. Webhook Github Action fills this need !
+                            </p>
+                            <h4>How it works ?</h4>
+                            <p class="lead">
+                                An HTTP server runs and listens permanently on certain pre-defined routes (see
+                                <a href="#routes">Routes</a>), when an event coming from github is emitted the server
+                                receives the information and processes it to send a notification to Slack or to Discord
+                                (depending on the road).
                             </p>
                             <hr />
                             <div class="row">
@@ -136,51 +150,111 @@
                                     </ul>
                                 </div>
                             </div>
-                            <p class="alert alert-info">
-                                If you have any questions about the installation or anything else about the project, you
-                                can contact me here ➡️
-                                <a target="_blank" href="mailto:julien.boucly.pro@gmail.com">Mail</a>.
-                            </p>
                         </section>
 
-                        <hr class="divider" />
+                        <hr class="mb-6" />
 
                         <!-- Installation -->
-                        <section id="idocs_installation">
+                        <section id="installation">
                             <h2>Installation</h2>
-                            <p class="lead">Follow the steps below to setup your site template:</p>
+                            <p class="lead">To implement your own webhook server you will need :</p>
                             <ol>
                                 <li>
-                                    Unzip the downloaded package and open the <strong>/HTML</strong> folder to find all
-                                    the template files. You will need to upload these files to your hosting web server
-                                    using FTP or localhost in order to use it on your website.
+                                    Fork this project in your Github account :
+                                    <a href="https://github.com/jboucly/webhook-github-action" target="_blank">
+                                        https://github.com/jboucly/webhook-github-action
+                                    </a>
                                 </li>
                                 <li>
-                                    Below is the folder structure and needs to be uploaded to your website or localhost
-                                    root directory:
+                                    Once the project fork is on your repositories, you can push it to a server such as
+                                    <a href="https://heroku.com/" target="_blank">Heroku</a> or
+                                    <a href="https://www.deta.sh/" target="_blank">Deta (free)</a>.
                                     <ul>
                                         <li>
-                                            <code>HTML/assets</code> - Contains all of the assets referenced
+                                            <b>
+                                                <a
+                                                    target="_blank"
+                                                    href="https://devcenter.heroku.com/categories/nodejs-support"
+                                                >
+                                                    Heroku
+                                                </a>
+                                            </b>
                                             <ul>
-                                                <li><code>HTML/css</code> - Stylesheet files</li>
-                                                <li><code>HTML/images</code> - Images files</li>
-                                                <li><code>HTML/js</code> - Javacript files</li>
-                                                <li><code>HTML/sass</code> - Sass files</li>
-                                                <li><code>HTML/vendor</code> – All external libs.</li>
+                                                <li>Create new app in your Heroku account</li>
+                                                <li>Select NodeJS Buildpack</li>
+                                                <li>
+                                                    Set environments variables (see
+                                                    <a href="#environments">environments variables</a>)
+                                                </li>
+                                                <li>
+                                                    Deploy app ! (see
+                                                    <a href="https://devcenter.heroku.com/articles/git" target="_blank">
+                                                        Deploying with Git
+                                                    </a>
+                                                    )
+                                                </li>
                                             </ul>
                                         </li>
-                                        <li><code>HTML/index.html</code> - Homepage</li>
+                                        <li>
+                                            <b>
+                                                <a target="_blank" href="https://docs.deta.sh/docs/home/">Deta</a>
+                                            </b>
+                                            <ul>
+                                                <li>
+                                                    Install
+                                                    <a href="https://docs.deta.sh/docs/cli/install" target="_blank">
+                                                        Deta CLI
+                                                    </a>
+                                                </li>
+                                                <li>Create new micro</li>
+                                                <li>
+                                                    Set
+                                                    <a
+                                                        href="https://docs.deta.sh/docs/cli/commands#deta-update"
+                                                        target="_blank"
+                                                    >
+                                                        Deta environments
+                                                    </a>
+                                                    variables (see <a href="#environments">environments variables</a>)
+                                                </li>
+                                                <li>
+                                                    Deploy in Deta micro ! (see
+                                                    <a
+                                                        target="_blank"
+                                                        href="https://docs.deta.sh/docs/cli/commands#deta-deploy"
+                                                    >
+                                                        Doc
+                                                    </a>
+                                                    )
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
-                                <li>You should upload all or specific HTML files as per your need.</li>
-                                <li>You are good to go for adding your content now!</li>
                             </ol>
                         </section>
 
                         <hr class="divider" />
 
-                        <!-- HTML Structure -->
-                        <section id="idocs_html_structure">
+                        <!-- Environments -->
+                        <section id="environments">
+                            <h2>Environments variables</h2>
+                            <ul>
+                                <li>
+                                    <code>NODE_ENV</code> : environments of your app. <br />
+                                    Available : <code>production</code>, <code>development</code>
+                                </li>
+                                <li><code>WEBHOOK_URL</code> : Url of your webhook example bot Discord</li>
+                                <li><code>WEBHOOK_SECRET</code> : Secret for access in your webhook endpoint</li>
+                                <li><code>DISCORD_ICON_URL</code> : Url for add your icon in Discord notification</li>
+                                <li><code>DOC_IS_ACTIVE</code> : Active documentation route (route of doc is : /)</li>
+                            </ul>
+                        </section>
+
+                        <hr class="divider" />
+
+                        <!-- Configurations -->
+                        <section id="configurations">
                             <h2>HTML Structure</h2>
                             <p>
                                 iDocs follows a simple and easy to customize coding structure. Here is the sample for
@@ -200,9 +274,8 @@
 
                         <hr class="divider" />
 
-                        <!-- Sass
-		============================ -->
-                        <section id="idocs_sass">
+                        <!-- Routes -->
+                        <section id="routes">
                             <h2>Sass</h2>
                             <p>
                                 We have added SASS <code>.scss</code> files in template. If you know how to use SASS you
@@ -221,85 +294,28 @@
 
                         <hr class="divider" />
 
-                        <!-- Color Schemes
-		============================ -->
-                        <section id="idocs_color_schemes">
-                            <h2>Color Schemes</h2>
-                            <p>
-                                You can change your Website's Color Scheme in an instant. We have build
-                                <strong>10 Color</strong> css file for change template primary color.
-                            </p>
-                            <ul>
-                                <li><code>color-blue.css</code> - Blue Color</li>
-                                <li><code>color-brown.css</code> - Brown Color</li>
-                                <li><code>color-cyan.css</code> - Cyan Color</li>
-                                <li><code>color-green.css</code> - Green Color</li>
-                                <li><code>color-orange.css</code> - Orange Color</li>
-                                <li><code>color-indigo.css</code> - Indigo Color</li>
-                                <li><code>color-purple.css</code> - Purple Color</li>
-                                <li><code>color-red.css</code> - Red Color</li>
-                                <li><code>color-teal.css</code> - Teal Color</li>
-                                <li><code>color-yellow.css</code> - Yellow Color</li>
-                            </ul>
-                            <p>
-                                Simply add Color CSS file link it in the Document <code>&lt;head&gt;</code>.<br />
-                                Make sure you add the <code>css/color-blue.css</code> stylesheet in your head after the
-                                <code>css/stylesheet.css</code> file linking from above mentioned 10 color css file.
-                            </p>
-                            <p><strong>For Example:</strong></p>
-                        </section>
-
-                        <hr class="divider" />
-
-                        <!-- Customization -->
-                        <section id="idocs_theme_customization">
-                            <h2>Theme Customization</h2>
-                            <p>
-                                We have include a Custom CSS File in the <code>css</code> Folder so that you can better
-                                handle your Customizations for New Styles or Overwriting Default Theme Styles. Simply
-                                add all your Custom CSS Codes in the <code>css/custom.css</code> File and link it in the
-                                Document <code>&lt;head&gt;</code> after the <code>css/stylesheet.css</code> Linking.
-                                Also make sure that this is the Last Linked CSS File in the Document
-                                <code>&lt;head&gt;</code> so that your Custom CSS Styles are Overwritten properly.
-                            </p>
-                            <pre>
-                        </section>
-
-                        <hr class="divider" />
-
-                        <!-- Logo Settings -->
-                        <section id="idocs_logo_settings">
-                            <h2>Logo Settings</h2>
-                            <p>The Logo Container can be found in the Header Container - <code>&lt;header&gt;</code></p>
-                        </section>
-
-                        <hr class="divider" />
-
                         <!-- Support -->
                         <section id="idocs_support">
                             <h2>Support</h2>
                             <p>
-                                If this documentation doesn't answer your questions, So, Please send us 
-                                <a
-                                    class="link"
-                                    target="_blank"
-                                    href="mailto:julien.boucly.pro@gmail.com"
-                                    >
-                                    Email
-                                </a>
+                                If this documentation doesn't answer your questions, So, Please send us
+                                <a class="link" target="_blank" href="mailto:julien.boucly.pro@gmail.com"> Email </a>
+                            </p>
+
                             <p>
                                 We are located in UTC+1 time zone and we answer all questions within 12-24 hours in
                                 weekdays. In some rare cases the waiting time can be to 48 hours. (except holiday
                                 seasons which might take longer).
                             </p>
                             <div class="alert alert-danger mb-4">
-                                <span class="badge badge-danger text-uppercase">Note:</span> 
-                                If you encounter bugs, please do not send an email but rather open a 
-                                <a href="https://github.com/jboucly/webhook-github-action/issues/new/choose">ticket</a> 
+                                <span class="badge badge-danger text-uppercase">Note:</span>
+                                If you encounter bugs, please do not send an email but rather open a
+                                <a href="https://github.com/jboucly/webhook-github-action/issues/new/choose">ticket</a>
                                 on the Github repository
                             </div>
                             <h4>
-                                Don’t forget to Rate this project on Github repository <i class="fas fa-star text-warning"></i>
+                                Don’t forget to Rate this project on Github repository
+                                <i class="fas fa-star text-warning"></i>
                             </h4>
                         </section>
 
@@ -314,15 +330,16 @@
                             </p>
                             <p class="alert alert-info mb-5">
                                 For future updates follow me on Github
-                                <a target="_blank" href="https://github.com/jboucly">
-                                    @jboucly
-                                </a>
+                                <a target="_blank" href="https://github.com/jboucly"> @jboucly </a>
                             </p>
 
                             <h3 id="v1-1">Version 1.0.2 <small class="text-muted">(24 Nov, 2022)</small></h3>
                             <ul class="changelog">
-                                <li><span class="badge badge-info">Updated</span>  Update Deta config</li>
-                                <li><span class="badge badge-success">Added</span> Added security on webhooks routes to prevent intrusions</li>
+                                <li><span class="badge badge-info">Updated</span> Update Deta config</li>
+                                <li>
+                                    <span class="badge badge-success">Added</span> Added security on webhooks routes to
+                                    prevent intrusions
+                                </li>
                             </ul>
 
                             <hr class="divider" />
@@ -332,8 +349,13 @@
                                 <li><span class="badge badge-danger">Fixed</span> Remove vercel</li>
                                 <li><span class="badge badge-danger">Fixed</span> Some minor bugs for responsive</li>
                                 <li><span class="badge badge-info">Updated</span> Replace http server for express</li>
-                                <li><span class="badge badge-success">Added</span> Add Deta config file for deployment</li>
-                                <li><span class="badge badge-success">Added</span> Create routes file for define express routes</li>
+                                <li>
+                                    <span class="badge badge-success">Added</span> Add Deta config file for deployment
+                                </li>
+                                <li>
+                                    <span class="badge badge-success">Added</span> Create routes file for define express
+                                    routes
+                                </li>
                             </ul>
 
                             <hr class="divider" />
@@ -356,16 +378,17 @@
                                 data-toggle="tooltip"
                                 data-original-title="GitHub"
                                 href="https://github.com/jboucly/webhook-github-action"
-                                >
+                            >
                                 <i class="fab fa-github"></i>
                             </a>
                         </li>
                     </ul>
                     <p class="text-center">
                         Copyright &copy; 2022 <a href="https://jboucly.fr">Jboucly</a>. All Rights Reserved.
-                        <br>
+                        <br />
                         <span class="text-1 text-center mb-0">
-                            Design &amp; Develop by <a class="btn-link" target="_blank" href="http://www.harnishdesign.net/">HarnishDesign</a>.
+                            Design &amp; Develop by
+                            <a class="btn-link" target="_blank" href="http://www.harnishdesign.net/">HarnishDesign</a>.
                         </span>
                     </p>
                 </div>
