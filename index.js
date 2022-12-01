@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const { setRoutes } = require('./src/routes');
@@ -15,6 +16,8 @@ app.use(
     })
 );
 app.use(express.json());
+app.engine('html', require('ejs').renderFile);
+app.use(express.static(path.join(__dirname, 'src', 'public')));
 
 if (process.env.NODE_ENV === 'development') {
     app.listen(3000, 'localhost', () => {

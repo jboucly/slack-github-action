@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="author" content="jboucly" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="Documentation for webhook github action project" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no" />
+
+        <link href="../images/favicon.ico" rel="icon" />
+        <title>Documentation | Webhook Github Action</title>
+
+        <!-- Custom Stylesheet -->
+        <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+        <!-- Font Awesome Icon -->
+        <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/all.min.css" />
+        <!-- Highlight Syntax -->
+        <link rel="stylesheet" type="text/css" href="../vendor/highlight.js/styles/github.css" />
+        <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css" />
+        <!-- Magnific Popup -->
+        <link rel="stylesheet" type="text/css" href="../vendor/magnific-popup/magnific-popup.min.css" />
+    </head>
+
+    <body data-spy="scroll" data-target=".idocs-navigation" data-offset="125">
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="lds-ellipsis">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!-- Preloader End -->
+
+        <!-- Document Wrapper -->
+        <div id="main-wrapper">
+            <!-- Header -->
+            <header id="header" class="sticky-top">
+                <!-- Navbar -->
+                <nav class="primary-menu navbar navbar-expand-lg navbar-dropdown-dark">
+                    <div class="container-fluid">
+                        <!-- Sidebar Toggler -->
+                        <button id="sidebarCollapse" class="navbar-toggler d-block d-md-none" type="button">
+                            <span></span><span class="w-75"></span><span class="w-50"></span>
+                        </button>
+
+                        <!-- Logo -->
+                        <h4 class="mt-4">Webhook Github Actions</h4>
+                        <span class="text-2 ml-2"><%= version %></span>
+                        <!-- Logo End -->
+
+                        <!-- Navbar Toggler -->
+                        <ul class="social-icons social-icons-sm ml-lg-2 mr-2">
+                            <li class="social-icons-twitter">
+                                <a
+                                    target="_blank"
+                                    data-toggle="tooltip"
+                                    data-original-title="Github"
+                                    href="https://github.com/jboucly/webhook-github-action"
+                                    ><i class="fab fa-github"></i
+                                ></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- Navbar End -->
+            </header>
+            <!-- Header End -->
+
+            <!-- Content -->
+            <div id="content" role="main">
+                <!-- Sidebar Navigation -->
+                <div class="idocs-navigation bg-dark docs-navigation-dark">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#start">Getting Started</a>
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#installation">Installation</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#environments">Environments variables</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#configurations">Github configurations</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#routes">Routes</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#support">Support</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#development">Developments</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#changelog">Changelog</a>
+                            <ul class="nav flex-column">
+                                <li class="nav-item"><a class="nav-link" href="#v1-0-2">v1.0.2</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#v1-0-1">v1.0.1</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#v1-0-0">v1.0.0</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Docs Content -->
+                <div class="idocs-content">
+                    <div class="container">
+                        <!-- Getting Started -->
+                        <section id="start">
+                            <div class="d-flex align-center justify-content-center mb-5">
+                                <img
+                                    src="https://img.shields.io/static/v1?style=for-the-badge&color=161b22&logoColor=white&logo=github&label=&message=github-actions"
+                                    alt="slack"
+                                    class="mr-2"
+                                />
+                                <img
+                                    src="https://img.shields.io/static/v1?style=for-the-badge&color=green&logoColor=white&logo=slack&label=slack&message=webhook"
+                                    alt="slack"
+                                    class="mr-2"
+                                />
+                                <img
+                                    src="https://img.shields.io/static/v1?style=for-the-badge&color=7289DA&logoColor=white&logo=discord&label=discord&message=webhook"
+                                    alt="discord"
+                                />
+                            </div>
+                            <h1>What is Webhook Github Actions ?</h1>
+                            <p class="lead">
+                                Webhook Github Action is a self-hosted express server allowing the sending of
+                                notification (webhook) to several messaging systems. Example, you work in a team and you
+                                would like to be informed when a CI/CD fails to intervene quickly on the problem
+                                encountered by the CI/CD. Webhook Github Action fills this need !
+                            </p>
+                            <h4>How it works ?</h4>
+                            <p class="lead">
+                                An HTTP server runs and listens permanently on certain pre-defined routes (see
+                                <a href="#routes">Routes</a>), when an event coming from github is emitted the server
+                                receives the information and processes it to send a notification to Slack or to Discord
+                                (depending on the road).
+                            </p>
+                            <hr />
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-4">
+                                    <ul class="list-unstyled">
+                                        <li><strong>Version :</strong> <%= version %></li>
+                                        <li>
+                                            <strong>Author :</strong>
+                                            <a href="https://github.com/jboucly" target="_blank">Jboucly</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <ul class="list-unstyled">
+                                        <li><strong class="font-weight-700">Created :</strong> 31 August, 2022</li>
+                                        <li><strong>Update :</strong> 30 November, 2022</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <hr class="mb-6" />
+
+                        <!-- Installation -->
+                        <section id="installation">
+                            <h2>Installation</h2>
+                            <p class="lead">To implement your own webhook server you will need :</p>
+                            <ol>
+                                <li>
+                                    Fork this project in your Github account :
+                                    <a href="https://github.com/jboucly/webhook-github-action" target="_blank">
+                                        https://github.com/jboucly/webhook-github-action
+                                    </a>
+                                </li>
+                                <li>
+                                    Once the project fork is on your repositories, you can push it to a server such as
+                                    <a href="https://heroku.com/" target="_blank">Heroku</a> or
+                                    <a href="https://www.deta.sh/" target="_blank">Deta (free)</a>.
+                                    <ul>
+                                        <li>
+                                            <b>
+                                                <a
+                                                    target="_blank"
+                                                    href="https://devcenter.heroku.com/categories/nodejs-support"
+                                                >
+                                                    Heroku
+                                                </a>
+                                            </b>
+                                            <ul>
+                                                <li>Create new app in your Heroku account</li>
+                                                <li>Select NodeJS Buildpack</li>
+                                                <li>
+                                                    Set environments variables (see
+                                                    <a href="#environments">environments variables</a>)
+                                                </li>
+                                                <li>
+                                                    Deploy app ! (see
+                                                    <a href="https://devcenter.heroku.com/articles/git" target="_blank">
+                                                        Deploying with Git
+                                                    </a>
+                                                    )
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <b>
+                                                <a target="_blank" href="https://docs.deta.sh/docs/home/">Deta</a>
+                                            </b>
+                                            <ul>
+                                                <li>
+                                                    Install
+                                                    <a href="https://docs.deta.sh/docs/cli/install" target="_blank">
+                                                        Deta CLI
+                                                    </a>
+                                                </li>
+                                                <li>Create new micro</li>
+                                                <li>
+                                                    Set
+                                                    <a
+                                                        href="https://docs.deta.sh/docs/cli/commands#deta-update"
+                                                        target="_blank"
+                                                    >
+                                                        Deta environments
+                                                    </a>
+                                                    variables (see <a href="#environments">environments variables</a>)
+                                                </li>
+                                                <li>
+                                                    Deploy in Deta micro ! (see
+                                                    <a
+                                                        target="_blank"
+                                                        href="https://docs.deta.sh/docs/cli/commands#deta-deploy"
+                                                    >
+                                                        Doc
+                                                    </a>
+                                                    )
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </section>
+
+                        <hr class="divider" />
+
+                        <!-- Environments -->
+                        <section id="environments">
+                            <h2>Environments variables</h2>
+                            <ul>
+                                <li>
+                                    <code>NODE_ENV</code> : environments of your app. <br />
+                                    Available : <code>production</code>, <code>development</code>
+                                </li>
+                                <li><code>WEBHOOK_URL</code> : Url of your webhook example bot Discord</li>
+                                <li><code>WEBHOOK_SECRET</code> : Secret for access in your webhook endpoint</li>
+                                <li><code>DISCORD_ICON_URL</code> : Url for add your icon in Discord notification</li>
+                                <li><code>DOC_IS_ACTIVE</code> : Active documentation route (route of doc is : /)</li>
+                            </ul>
+                        </section>
+
+                        <hr class="divider" />
+
+                        <!-- Configurations -->
+                        <section id="configurations">
+                            <h2>Github Configurations</h2>
+                            <p>
+                                Once your server is ready to receive notifications from Github, you can set up github
+                                webhooks.
+                            </p>
+                            <p class="alert alert-info">Github webhooks are totally free and that's a pleasure 🚀</p>
+                            <p>
+                                Go to the settings of the repository on which you want to add notifications when your
+                                CI/CD evolves. And click on `Add webhook` :
+                            </p>
+                            <img class="mb-3 mt-3" src="images/add-webhook.png" />
+
+                            <ul>
+                                <li>
+                                    Once on the interface add the url of the webhook of your server on which this
+                                    application is located with the correct route for either Discord or Slack (see
+                                    <a href="#routes">Routes</a>).
+                                </li>
+                                <li>Select <code>application/json</code> for send JSON to server.</li>
+                                <li>Add your secret for access to endpoint of server.</li>
+                                <li>Select <i>individual events</i> and select <i>Check runs</i> than validate.</li>
+                            </ul>
+                            <img class="mb-3 mt-3" src="images/add-webhook.png" /><br />
+                        </section>
+
+                        <hr class="divider" />
+
+                        <!-- Routes -->
+                        <section id="routes">
+                            <h2>Routes</h2>
+                            <p>
+                                It's possible to send notification to Slack or Discord, and to send the notification
+                                from github either to Slack or to Discord there are precisely two routes available :
+                            </p>
+                            <ul>
+                                <li>
+                                    <code>/github-actions/slack</code> ➡️ Send notification for Slack (example of url :
+                                    <code>https://webhook.jboucly.fr/github-actions/slack</code>)
+                                </li>
+                                <li>
+                                    <code>/github-actions/discord</code> ➡️ Send notification for Discord (example of
+                                    url : <code>https://webhook.jboucly.fr/github-actions/discord</code>)
+                                </li>
+                            </ul>
+                        </section>
+
+                        <hr class="divider" />
+
+                        <!-- Support -->
+                        <section id="support">
+                            <h2>Support</h2>
+                            <p>
+                                If this documentation doesn't answer your questions, So, Please send us
+                                <a class="link" target="_blank" href="mailto:julien.boucly.pro@gmail.com"> Email </a>
+                            </p>
+
+                            <p>
+                                We are located in UTC+1 time zone and we answer all questions within 12-24 hours in
+                                weekdays. In some rare cases the waiting time can be to 48 hours. (except holiday
+                                seasons which might take longer).
+                            </p>
+                            <div class="alert alert-danger mb-4">
+                                <span class="badge badge-danger text-uppercase">Note:</span>
+                                If you encounter bugs, please do not send an email but rather open a
+                                <a href="https://github.com/jboucly/webhook-github-action/issues/new/choose">ticket</a>
+                                on the Github repository
+                            </div>
+                            <h4>
+                                Don’t forget to Rate this project on Github repository
+                                <i class="fas fa-star text-warning"></i>
+                            </h4>
+                        </section>
+
+                        <hr class="divider" />
+
+                        <!-- Development -->
+                        <section id="development">
+                            <h2>Developments</h2>
+                            <b>Required : Node installed</b>
+                            <br /><br />
+                            <p class="mb-0">Install project :</p>
+                            <code>$ yarn</code><br /><br />
+                            <p class="mb-0">Run development mode :</p>
+                            <code>$ yarn start:dev</code><br /><br />
+                            <p class="mb-0">Run production mode :</p>
+                            <code>$ yarn start</code>
+                        </section>
+
+                        <hr class="divider" />
+
+                        <!-- Changelog -->
+
+                        <section id="changelog">
+                            <h2>Changelog</h2>
+                            <p class="text-4">
+                                See what's new added, changed, fixed, improved or updated in the latest versions.
+                            </p>
+                            <p class="alert alert-info mb-5">
+                                To follow the new updates, follow me on Github
+                                <a target="_blank" href="https://github.com/jboucly">@jboucly</a>. Or propose a new
+                                feature on
+                                <a
+                                    target="_blank"
+                                    href="https://github.com/jboucly/webhook-github-action/issues/new?assignees=jboucly&labels=enhancement&template=feature_request.md&title="
+                                >
+                                    issue
+                                </a>
+                                .
+                            </p>
+
+                            <h3 id="v1-0-3">Version 1.0.3 <small class="text-muted">(1 Dec, 2022)</small></h3>
+                            <ul class="changelog">
+                                <li>
+                                    <span class="badge badge-success">Added</span>Added condition with environment
+                                    variable (<code>DOC_IS_ACTIVE</code>)for enabled home route <code>/</code>.
+                                </li>
+                                <li><span class="badge badge-success">Added</span>Added nodemon config file.</li>
+                                <li>
+                                    <span class="badge badge-success">Added</span>Added <code>ejs</code> package to
+                                    render HTML file with express
+                                </li>
+                                <li>
+                                    <span class="badge badge-info">Update</span>Update home route for show documentation
+                                    of this project.
+                                </li>
+                                <li>
+                                    <span class="badge badge-info">Update</span>Update <code>.env.example</code> file to
+                                    add new variable and comment
+                                </li>
+                            </ul>
+
+                            <hr class="divider" />
+
+                            <h3 id="v1-0-2">Version 1.0.2 <small class="text-muted">(24 Nov, 2022)</small></h3>
+                            <ul class="changelog">
+                                <li><span class="badge badge-info">Updated</span> Update Deta config</li>
+                                <li>
+                                    <span class="badge badge-success">Added</span> Added security on webhooks routes to
+                                    prevent intrusions
+                                </li>
+                            </ul>
+
+                            <hr class="divider" />
+
+                            <h3 id="v1-0-1">Version 1.0.1 <small class="text-muted">(23 Nov, 2022)</small></h3>
+                            <ul class="changelog">
+                                <li><span class="badge badge-danger">Fixed</span> Remove vercel</li>
+                                <li><span class="badge badge-danger">Fixed</span> Some minor bugs for responsive</li>
+                                <li><span class="badge badge-info">Updated</span> Replace http server for express</li>
+                                <li>
+                                    <span class="badge badge-success">Added</span> Add Deta config file for deployment
+                                </li>
+                                <li>
+                                    <span class="badge badge-success">Added</span> Create routes file for define express
+                                    routes
+                                </li>
+                            </ul>
+
+                            <hr class="divider" />
+
+                            <h3 id="v1-0-0">Version 1.0.0 <small class="text-muted">(22 Nov, 2022)</small></h3>
+                            <p>Initial Release</p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <!-- Content end -->
+
+            <!-- Footer -->
+            <footer id="footer" class="bg-dark footer-text-light">
+                <div class="container">
+                    <ul class="social-icons social-icons-lg social-icons-muted justify-content-center mb-3">
+                        <li>
+                            <a
+                                target="_blank"
+                                data-toggle="tooltip"
+                                data-original-title="GitHub"
+                                href="https://github.com/jboucly/webhook-github-action"
+                            >
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="text-center">
+                        Copyright &copy; 2022 <a href="https://jboucly.fr">Jboucly</a>. All Rights Reserved.
+                        <br />
+                        <span class="text-1 text-center mb-0">
+                            Design &amp; Develop by
+                            <a class="btn-link" target="_blank" href="http://www.harnishdesign.net/">HarnishDesign</a>.
+                        </span>
+                    </p>
+                </div>
+            </footer>
+            <!-- Footer end -->
+        </div>
+        <!-- Document Wrapper end -->
+
+        <!-- Back To Top -->
+        <a id="back-to-top" data-toggle="tooltip" title="Back to Top" href="javascript:void(0)">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Highlight JS -->
+        <script src="../vendor/highlight.js/highlight.min.js"></script>
+        <!-- Easing -->
+        <script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+        <!-- Magnific Popup -->
+        <script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <!-- Custom Script -->
+        <script src="../js/theme.js"></script>
+    </body>
+</html>
