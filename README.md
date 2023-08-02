@@ -53,17 +53,17 @@ For Discord :
 ### Installation
 
 ```bash
-$ yarn
+$ npm i
 ```
 
 ### Run dev mode
 
 ```bash
-$ yarn start:dev
+$ npm run start:dev
 ```
 
 ### Run prod mode
 
 ```bash
-$ yarn start
+$ npm run start
 ```

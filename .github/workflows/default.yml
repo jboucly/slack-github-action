@@ -17,22 +17,8 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v2
 
-            - name: Get yarn cache directory path
-              id: yarn-cache-dir-path
-              run: echo "::set-output name=dir::$(yarn cache dir)"
-
-            - name: Cache modules
-              uses: actions/cache@v1.1.2
-              id: yarn-cache
-              with:
-                  node-version: '19.1.0'
-                  path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-yarn-
-
             - name: Install dependencies
-              run: yarn --frozen-lockfile
+              run: npm install
 
             - name: Run prettier
-              run: yarn prettier
+              run: npm run prettier
