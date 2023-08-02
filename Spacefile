@@ -1,7 +1,18 @@
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
 v: 0
 micros:
-  - name: webhook-github-action
-    src: ./
-    engine: nodejs16
-    primary: true
+    - name: webhook-github-action
+      src: .
+      primary: true
+      engine: nodejs16
+      run: node index.js
+      presets:
+          env:
+              - name: WEBHOOK_SECRET
+                description: Webhook secret to send message
+              - name: DOC_IS_ACTIVE
+                description: Activate documentation
+              - name: DISCORD_ICON_URL
+                description: Icon url for discord webhook
+              - name: WEBHOOK_URL
+                description: Webhook url to send message

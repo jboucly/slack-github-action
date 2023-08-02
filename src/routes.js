@@ -15,11 +15,14 @@ const setRoutes = (app) => {
     app.post('/github-actions/discord', verifySecret, async (req, res) => {
         await sendDiscordNotifications(req.body);
         res.status(200).send();
+
+        console.info('Discord notification sent');
     });
 
     app.post('/github-actions/slack', verifySecret, async (req, res) => {
         await sendSlackNotification(req.body);
         res.status(200).send();
+        console.info('Slack notification sent');
     });
 };
 
