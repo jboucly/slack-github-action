@@ -4,6 +4,7 @@ micros:
     - name: webhook-github-action
       src: .
       primary: true
+      public: true
       engine: nodejs16
       run: node index.js
       presets:
